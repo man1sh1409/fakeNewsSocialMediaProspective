@@ -67,7 +67,7 @@
       <div class="container">
         <div id="form-container">
           <h2 class="text-white center">Detection Form</h2>
-          <form action="/detect/predict" method="post">
+          <form action="/detect/predict" method="post" >
             <div class="mb-3">
               <label
                 for="exampleFormControlInput1"
@@ -98,7 +98,7 @@
             </div>
 
             <button class="btn btn-primary "
-                type="submit" id="btn-submit">
+                type="submit" id="btn-submit" >
               Submit
             </button>
             <!--<button class="btna" type="reset" id="reset">Reset</button>-->
@@ -111,8 +111,9 @@
           data-bs-toggle="modal" 
           data-bs-target="#exampleModal"
           id="dis-btn"
+          style="display:none"
         >
-          Submit
+          Show Result
         </button>
 
         <!-- Modal -->
@@ -130,7 +131,7 @@
                   Real News
                 </h3>
               <div class="modal-body" id="show-res">
-                <img src="static/success.gif" alt="" style='width:100%;height:30%'>
+                
               </div>
               <div class="modal-footer">
                 <button
@@ -160,17 +161,28 @@
     </section>
 
     <script>
-      res={{result}}
-      src=""
-      let displayDiv=document.getElementById('show-res')
-      let modalBtn=document.getElementById('dis-btn')
-      mo
-      if(res){
-        src="static/fail.gif"
-      }
-      else{
-        src="static/success.gif"
-      }
+      let modalBtn=document.getElementById('btn-submit')
+      modalBtn.addEventListener("click",(e)=>{
+        console.log('listinign event')
+        e.preventDefault()
+        res={{result}}
+        src=""
+        let displayDiv=document.getElementById('show-res') 
+        var x = document.createElement("IMG");
+        if(res){
+          x.setAttribute("src", 'static/fail.gif');
+        }
+        else{
+          x.setAttribute("src",src="static/success.gif")
+        }
+        x.setAttribute("width", "100%");
+        x.setAttribute("height", "30%");
+        x.setAttribute("alt", "gif image");
+        displayDiv.appendChild(x);
+        let displaybtn=document.getElementById('dis-btn')
+        displaybtn.style.display='block'
+      })
+      
     </script>
   </body>
 </html>

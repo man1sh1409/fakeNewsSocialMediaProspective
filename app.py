@@ -27,7 +27,7 @@ def predict():
         title=req.form['tweets']
         # pipeline=pickle.load(open('model.pkl','rb'))
         print(userid)
-    res=0
+    res=1
     msg=""
     if(res):msg="Fake"
     else:msg="Real"
